@@ -20,10 +20,24 @@ const App = () => {
             setRoutines(data);
         }
     }    
-
-
-
-
-
+    useEffect(() => {
+        fetchRoutines();
+      }, [token])
+      return <div>
+        Hello World
+        <Route exact path='/'>
+          <Home {...props}/>
+        </Route>
+        <Route exact path="/activities">
+          <div>Activities</div>
+        </Route>
+        <Route exact path="/routines">
+          <h1>Routines</h1>
+          {
+            routines.map((routine) => <div>{routine.name}</div>)
+          }
+        </Route>
+      </div>
 }
 
+export default App;
