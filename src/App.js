@@ -8,6 +8,7 @@ import Profile from './components/Profile';
 import Activities from './components/Activities';
 import Routines from './components/Routines';
 import MyRoutines from './components/MyRoutines';
+import SingleRoutines from './components/SingleRoutine';
 
 const App = () => {
     const params = useParams();

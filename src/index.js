@@ -1,11 +1,23 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import {BrowserRouter as  Router } from "react-router-dom";
-import { App } from "./Components"
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from './context/UserContext';
+import App from "./App";
+import Footer from "./Footer";
+import Nav from "./Nav";
 
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  document.getElementById("app")
-);
+
+const Index = ()=>{
+
+
+    return(
+        <BrowserRouter>
+            <UserProvider>
+                <Nav />
+                <App />
+                <Footer />
+            </UserProvider>
+        </BrowserRouter>
+    )
+}
+ReactDOM.render(<Index />, document.getElementById('app'))
