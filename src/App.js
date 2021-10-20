@@ -2,7 +2,7 @@ import React,{useContext, useEffect} from 'react';
 import { Route } from 'react-router';
 import {UserContext} from './context/UserContext';
 import {useParams} from 'react-router';
-import Homepage from './components/Homepage';
+import Home from './components/Home';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Activities from './components/Activities';
@@ -16,7 +16,7 @@ const App = () => {
     return (
         <>
         <Route exact path='/'>
-            <Homepage />
+            <Home />
         </Route>
         <Route exact path='/profile'>
             <Profile/>
