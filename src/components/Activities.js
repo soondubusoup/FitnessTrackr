@@ -1,30 +1,25 @@
-import React, {useState,useEffect} from 'react'
-import { getAllActivities } from '../utils/CallApi'
-import Activity from '../components/Activity'
+import React from 'react'
 
-function Activities() {
+import { Activity } from '.'
 
-    const[ activities, setActivities] = useState([])
-
-    useEffect(async () =>{
-        const allActivities = await getAllActivities()
-        if (allActivities) {
-            setActivities(allActivities)
-        }
-
-    }, [])
-
-    return (
-        <div>
-            <h4>Activities</h4>
-            {activities.map((activity, idx)=>{
-                return <Activity activity={activity} key={idx}/>
-            })}
+const Activities = ({ activities }) => {
+    return activities
+        ? <>
+            <div>
+                <h2>Activities</h2>
+                {
+                    activities.map(activity => <Activity key = {activity.id} activity = {activity}> 
+                            
+                        </Activity>
+                    )
+                }
 
 
+            </div>
 
-        </div>
-    )
+
+        </> :null 
 }
 
 export default Activities
+

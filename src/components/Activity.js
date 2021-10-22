@@ -1,13 +1,17 @@
 import React from 'react'
 
-const Activity = ( activity ) => {
-    const {id, creatorId, isPublic, name, description } = activity.activity
-    return (
-        <div>
-        <span>{name}</span>
-        <span>{description}</span>
-        </div>
-    )
+const Activity = ({ children, activity }) => {
+    return activity
+        ? <>
+            <div>              
+                <h3>Name: {activity.name}</h3>
+                <div>Description: {activity.description}</div>
+              
+         </div>
+        {children}
+
+        </> :null 
 }
 
 export default Activity
+

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useParams, useHistory } from 'react-router';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-import { register } from '../utils/CallApi';
+// import { register } from '../utils/CallApi';
 
 
 const { REACT_APP_BASE_URL } = process.env;
