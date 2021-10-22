@@ -66,14 +66,12 @@ const App = () => {
         <Route exact path='/profile'>
             <Profile/>
         </Route>
-        <Route exact path='/users/:method'>
-            {
-            params.method==='login' ? <Login {...props}  /> : <Register /> 
-            }   
+        <Route exact path='/users/login'>
+            <Login />
         </Route>
-        {/* <Route exact path='/users/:method'>
-        <Login {...props} />
-        </Route> */}
+        <Route exact path='/users/register'>
+            <Register />
+        </Route>
         <Route exact path='/activities'>
             <Activities {...props} />
         </Route>

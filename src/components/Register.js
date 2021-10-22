@@ -7,6 +7,7 @@ import { register } from '../util/index';
 
 const { REACT_APP_BASE_URL } = process.env;
 
+
 const Register = () => {
     const {isLoggedIn, setIsLoggedIn, setUserToken, setUser} = useContext(UserContext)
     const [username, setUsername] = useState('');
@@ -15,36 +16,30 @@ const Register = () => {
     const history = useHistory();
     console.log('params: ', params);
 
-
+    const handleRegister = async (event) => {
+        event.preventDefault();
+        try {
+            const user = await register({username, password});
+            if (user) {
+                localStorage.setItem('token', user.token)
+                setUsername('');
+                setPassword('');
+                history.push('/');
+            };
+        } catch (error) {
+            console.error (error);
+        };        
+    };
+    
     return<>
-        <h1>{params.method}</h1>
-        <form onSubmit={async (event) => {
-            event.preventDefault();
-            const fetchUrl = `${REACT_APP_BASE_URL}/users/${params.method}`
-
-        if (params.method=='register') {
-            const registerData = await register({username:username, password:password})
-            if(registerData && !registerData.name) {
-                localStorage.setItem("userToken", registerData.token);
-                setUserToken(registerData.token)
-                setIsLoggedIn(true)
-                setUser(username)
-            }else{
-                alert('Make sure password has a length of 8 or more (:')
-            }
-        }
-
-        }}>
+        <h1>Hello 2 {username} {password}</h1>
+        <form onSubmit={handleRegister}>
             <input type="text" placeholder="username" 
             onChange={(event)=> setUsername(event.target.value)}></input>
             <hr></hr>
             <input type="password" placeholder="password" 
             onChange={(event)=> setPassword(event.target.value)}></input>
             <hr></hr>
-            {
-                params.method === 'Register' ? <div>Register Input</div> : ''
-            }
-
             <button type="submit">Submit</button>
 
         </form>
