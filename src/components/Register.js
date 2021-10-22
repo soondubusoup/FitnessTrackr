@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useParams, useHistory } from 'react-router';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-// import { register } from '../utils/CallApi';
+import { register } from '../util/index';
 
 
 const { REACT_APP_BASE_URL } = process.env;
@@ -30,7 +30,7 @@ const Register = () => {
                 setIsLoggedIn(true)
                 setUser(username)
             }else{
-                alert('failed')
+                alert('Make sure password has a length of 8 or more (:')
             }
         }
 
