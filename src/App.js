@@ -4,6 +4,7 @@ import {UserContext} from './context/UserContext';
 import {useParams} from 'react-router';
 import Home from './components/Home';
 import Register from './components/Register';
+import Login from './components/Login'
 import Profile from './components/Profile';
 import Activities from './components/Activities';
 import Routines from './components/Routines';
@@ -67,9 +68,12 @@ const App = () => {
         </Route>
         <Route exact path='/users/:method'>
             {
-            params.method==='login' ? <Login  /> : <Register /> 
+            params.method==='login' ? <Login {...props}  /> : <Register /> 
             }   
         </Route>
+        {/* <Route exact path='/users/:method'>
+        <Login {...props} />
+        </Route> */}
         <Route exact path='/activities'>
             <Activities {...props} />
         </Route>
