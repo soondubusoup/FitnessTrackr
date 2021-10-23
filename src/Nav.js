@@ -16,7 +16,7 @@
 //                 <Link to="/activities" style={{ color: '#ff1515'}}>Activities</Link>
 //                 <Link to="/routines" style={{ color: '#ff1515'}}>Routines</Link>
 //                 {token ? <Link to="/user/routines">My Routines</Link>: null}
-//                 <Link to="/users/login" style={{color: '#ff1515'}}>Login</Link>
+                // <Link to="/users/login">Login</Link>
 //                 <Link to="/users/register" style={{color: '#ff1515'}}>Register</Link>
 //                 {<button onClick={() => {
 //                     localStorage.removeItem('token')

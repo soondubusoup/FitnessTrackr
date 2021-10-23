@@ -1,7 +1,7 @@
 import React,{useContext, useEffect, useState} from 'react';
 import { Route, Link } from 'react-router-dom';
 import {UserContext} from '../context/UserContext';
-import {useParams} from 'react-router';
+import {useParams, useHistory} from 'react-router';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login'
@@ -22,6 +22,8 @@ const App = () => {
     const [activities, setActivities] = useState([]);
     const [userRoutines, setUserRoutines] = useState([]);
     const [mango, setMango] = useState('');
+
+    const history = useHistory();
     
     const fetchRoutines = async () => {
         try {
@@ -109,12 +111,13 @@ const App = () => {
                         localStorage.removeItem('token');
                         localStorage.removeItem('username');
                         localStorage.removeItem('userId');
-                        setUserName('');
-                        setToken('');
+                        setMango('');
+                        // setToken('');
                         setUserRoutines([]);
                         history.push('/');
                     }}>Log out</button>
-                    : <Link to='/account/login' className='nav-link'>Sign in</Link>
+                    : <Link to='/users/login' className='nav-link'>Login</Link>                 
+
                 }
             </div>
         </header>
