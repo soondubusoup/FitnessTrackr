@@ -8,7 +8,7 @@ const { REACT_APP_BASE_URL } = process.env;
 
 
 
-const Login = () => {
+const Login = ({setMango}) => {
     const params = useParams();
     const history = useHistory();
 
@@ -25,8 +25,9 @@ const Login = () => {
             const user = await login({username, password});
             if (user) {
                 localStorage.setItem('token', user.token);
-                setUsername(username);
-                setPassword(password);
+                setMango(user.user.username)
+                setUsername('');
+                setPassword('');
                 history.push('/');
             };
         } catch (error) {
@@ -42,7 +43,7 @@ const Login = () => {
     }, [isLoggedIn])
 
     return<>
-        <h1>Hello 1 {username} {password} {params.method}</h1>
+        <h1>Please login below! (: {params.method}</h1>
         <form onSubmit={handleLogin}>
             <input type="text" placeholder="username" 
             onChange={(event)=> setUsername(event.target.value)}></input>

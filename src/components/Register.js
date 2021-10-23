@@ -9,7 +9,7 @@ const { REACT_APP_BASE_URL } = process.env;
 
 
 const Register = () => {
-    const {isLoggedIn, setIsLoggedIn, setUserToken, setUser} = useContext(UserContext)
+    const {isLoggedIn, setIsLoggedIn, setUserToken, setUser, set_username} = useContext(UserContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const params = useParams();
@@ -22,6 +22,7 @@ const Register = () => {
             const user = await register({username, password});
             if (user) {
                 localStorage.setItem('token', user.token)
+                set_username(user.user.username)
                 setUsername('');
                 setPassword('');
                 history.push('/');
@@ -32,7 +33,7 @@ const Register = () => {
     };
     
     return<>
-        <h1>Hello 2 {username} {password}</h1>
+        <h1>Hi there, please register below! </h1>
         <form onSubmit={handleRegister}>
             <input type="text" placeholder="username" 
             onChange={(event)=> setUsername(event.target.value)}></input>

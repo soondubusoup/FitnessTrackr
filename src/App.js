@@ -10,13 +10,18 @@ import Activities from './components/Activities';
 import Routines from './components/Routines';
 import MyRoutines from './components/MyRoutines';
 import SingleRoutines from './components/SingleRoutine';
-import { getAllRoutines, getAllActivities }  from './util';
+import { getAllRoutines, getAllActivities, getUserRoutinesWithToken }  from './util';
 
 const App = () => {
+    const token = localStorage.getItem('token')
+
     const params = useParams();
     // const [setUserToken, setIsLoggedIn]  = useContext(UserContext)
     const [routines, setRoutines] = useState([]);
     const [activities, setActivities] = useState([]);
+    const [userRoutines, setUserRoutines] = useState([]);
+    const [mango, setMango] = useState('');
+    
     const fetchRoutines = async () => {
         try {
             const fetchedRoutines = await getAllRoutines ();
@@ -43,34 +48,63 @@ const App = () => {
             console.error(error);
         };
     };
+
+    const fetchUserRoutines = async () => {
+        try { 
+            const userRoutines = await getUserRoutinesWithToken (mango, token);
+           
+         if(userRoutines) {
+           setUserRoutines(userRoutines)
+            return userRoutines
+         }  
+        }catch (error) {
+            console.error(error);
+        }
+    }
     const props = {
         routines,
         setRoutines,
         activities,
-        setActivities
+        setActivities,
+        userRoutines,
+        setUserRoutines,
+        mango,
+        setMango,
+        fetchRoutines,
+        fetchUserRoutines
+        
 
     }
     useEffect (() => {
         try {
             fetchRoutines();
             fetchActivities();
+            fetchUserRoutines();
         }catch (error) {
             console.error (error)
         }
-    } ,[])
+    } ,[token])
+
+    // useEffect(() => {
+    //     const foundToken = localStorage.getItem('token');
+    //     if (foundToken) {
+    //         setToken(foundToken);
+    //     };
+    // });
+
     return (
         <>
         <Route exact path='/'>
-            <Home />
+            <Home {...props} />
         </Route>
         <Route exact path='/profile'>
-            <Profile/>
+            <Profile {...props}/>
         </Route>
         <Route exact path='/users/login'>
-            <Login />
+            <Login {...props}/>
         </Route>
         <Route exact path='/users/register'>
-            <Register />
+            <Register {...props} />
         </Route>
         <Route exact path='/activities'>
             <Activities {...props} />
@@ -78,8 +112,8 @@ const App = () => {
         <Route path='/routines'>
             <Routines {...props} /> 
         </Route>
-        <Route path='/myroutines'>
-            <MyRoutines/>
+        <Route path='/user/routines'>
+            <MyRoutines {...props}/>
         </Route>
         </>
     )
