@@ -22,6 +22,7 @@ const App = () => {
     const [activities, setActivities] = useState([]);
     const [userRoutines, setUserRoutines] = useState([]);
     const [mango, setMango] = useState('');
+    
 
     const history = useHistory();
     
@@ -74,7 +75,8 @@ const App = () => {
         mango,
         setMango,
         fetchRoutines,
-        fetchUserRoutines
+        fetchUserRoutines,
+        fetchActivities
         
 
     }
