@@ -9,7 +9,7 @@ import Profile from './Profile';
 import Activities from './Activities';
 import Routines from './Routines';
 import MyRoutines from './MyRoutines';
-import SingleRoutines from './SingleRoutine';
+import SingleRoutine from './SingleRoutine';
 import { getAllRoutines, getAllActivities, getUserRoutinesWithToken }  from '../util';
 
 
@@ -102,6 +102,8 @@ const App = () => {
             <div className='logo'>Fitness Trac.kr</div>
             <div className='link-bar'>
                 <Link to='/' className='nav-link'>Home</Link>
+                <Link to="/users/register" >Register</Link>
+
                 <Link to='/routines' className='nav-link'>Routines</Link>
                 {
                  token ? <Link to='/user/routines' className='nav-link'>My Routines</Link> : null  

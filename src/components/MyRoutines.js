@@ -13,7 +13,6 @@ const MyRoutines = ({ userRoutines, fetchRoutines, fetchUserRoutines }) => {
     const createRoutine = async (event) => {
         event.preventDefault()
         try {
-            // if const response myRoutines does not show up if not 
            const response = await postRoutine (token, name, goal, isPublic) 
             if (response) {
                 setGoal('')

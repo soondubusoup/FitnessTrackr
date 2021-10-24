@@ -8,8 +8,8 @@ import { register } from '../util/index';
 const { REACT_APP_BASE_URL } = process.env;
 
 
-const Register = () => {
-    const {isLoggedIn, setIsLoggedIn, setUserToken, setUser, set_username} = useContext(UserContext)
+const Register = ({setMango}) => {
+    const {isLoggedIn, setIsLoggedIn, setUserToken, setUser} = useContext(UserContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const params = useParams();
@@ -22,7 +22,7 @@ const Register = () => {
             const user = await register({username, password});
             if (user) {
                 localStorage.setItem('token', user.token)
-                set_username(user.user.username)
+                setMango(user.user.username)
                 setUsername('');
                 setPassword('');
                 history.push('/');
