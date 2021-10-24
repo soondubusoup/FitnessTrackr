@@ -1,17 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const Activity = ({ children, activity }) => {
-    return activity
-        ? <>
-            <div>              
-                <h3>Name: {activity.name}</h3>
-                <div>Description: {activity.description}</div>
-              
-         </div>
-        {children}
+  return activity ? (
+    <>
+      <div>
+        <h3>Name: {activity.name}</h3>
+        <div>Description: {activity.description}</div>
+      </div>
+      {children}
+    </>
+  ) : null;
+};
 
-        </> :null 
-}
-
-export default Activity
-
+export default Activity;
