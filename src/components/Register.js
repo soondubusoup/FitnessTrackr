@@ -32,7 +32,7 @@ const Register = ({ setMango }) => {
   };
 
   return (
-    <>
+    <> 
       <h1>Hi there, please register below! </h1>
       <form onSubmit={handleRegister}>
         <input

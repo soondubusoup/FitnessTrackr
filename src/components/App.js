@@ -93,8 +93,7 @@ const App = () => {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <Link to="/users/register">Register</Link>
-
+          {token ? null :<Link to="/users/register">Register</Link>}
           <Link to="/routines" className="nav-link">
             Routines
           </Link>
