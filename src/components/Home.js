@@ -1,9 +1,18 @@
 import React from "react";
 
-const Home = () => {
+const Home = ({ user, token }) => {
   return (
     <>
-      <div>Hi, I'm FitnessTrac.kr</div>
+      <h1>
+        
+        <br />
+        <br />
+        {token ? (
+          <span>You are logged in as {user.username}</span>
+        ) : (
+          "Hi friend (:"
+        )}
+      </h1>
     </>
   );
 };
