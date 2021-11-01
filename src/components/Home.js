@@ -10,7 +10,7 @@ const Home = ({ user, token }) => {
         {token ? (
           <span>You are logged in as {user.username}</span>
         ) : (
-          "Hi friend (:"
+          "Hi friend (: 9"
         )}
       </h1>
     </>
